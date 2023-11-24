@@ -1,0 +1,255 @@
+<template>
+    <body>
+    <main id = "main-content">
+    <h1> Main Page</h1>
+    <div class="post-list" v-for="post in posts"   :key="post.index">  
+    <div class="posts">
+    <a class = "pic"> 
+        <img :src= post.profilepic width="50" height="50">
+    </a>
+    <div class = "pic2"> 
+        <img :src = post.picture>
+    </div>
+    <p> {{post.text}} </p>
+    <div class = "date">{{post.date}} </div>
+    <div class = "like">
+        <img v-bind:src = post.likepic width="70" height="50">
+    </div>
+    </div>
+    </div> 
+    </main>
+    <footer class="site-footer">
+        &copy; Homework 1 Page
+    </footer>
+    </body>
+</template>
+
+
+<script>
+export default {
+    name: "getData",
+    props: ["posts"]
+}
+</script>
+
+<style>
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    padding-top: .5em;
+    padding-right: .5em;
+    padding-bottom: .5em;
+    border: 1px solid #646174;
+    background-color: #a2ccea;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+}
+
+body {
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-footer {
+    position: relative;
+    background-color: #333; 
+    color: #fff;
+    text-align: center; 
+    padding: 10px;
+    margin-top: auto;
+}
+
+.nav {
+    margin-top: 5px;
+}
+
+.nav a {
+    padding: 10px 15px;
+    text-align: left;
+    display: inline;
+    color: #34495e;
+    font-size: .99em;
+    text-decoration: none;
+}
+
+/* Pseudo-class selector */
+.nav a:hover {
+    background-color: #7ebeb6;
+    color: #092747;
+}
+
+.posts {
+    position: relative;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 65%;
+    border: 1px solid #746161;
+    background-color: #ddd;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+}
+
+/* Descendant selector*/
+.posts p {
+    padding-left: 20px;
+    color: black;
+    text-align: left;
+    text-shadow: 1px 1px 2px #73c0f8
+}
+
+/* Child selector*/
+div > p {
+    font-family: arial;
+    
+}
+
+/*::first-letter pseudo-element*/
+.posts p::first-letter {
+    font-size: large;
+}
+
+.logo {
+    margin-left: auto;
+}
+
+#button {
+    border-radius: 10px;
+    background-color: darkblue;
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid #333333;
+    color: white;
+}
+
+/* Adjacent sibling selector*/
+.header + .container{
+    display: block;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background-color: #a2ccea;
+    border: 6px solid #a2ccea;
+    border-radius: 10px;
+    margin-top: 5%;
+}
+
+.container input {
+    margin-bottom:20px;
+}
+
+.pic {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.author {
+    position: absolute; 
+    top: 14px; 
+    left: 75px; 
+    color: black; 
+    padding: 5px; 
+    font-size: 18px;
+}
+
+.date {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    color: black; 
+    padding: 5px; 
+    font-size: 12px;
+}
+
+.posts .pic2 img {
+    width: 95%;
+    height: auto; 
+    display: block; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* General Sibling selector */
+p ~ .date {
+    font-style: italic;
+}
+
+
+/* New code for homework 2 */
+.drop-content {
+    width: 20%;
+    border-radius: 3px;
+    padding: 1%;
+    right:5px;
+    display: none;
+    position: absolute;
+    background-color: #ddd;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #746161;
+}
+
+.show {
+    display: block;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    z-index: 99;
+    font-size: 32px;
+    aspect-ratio: 2/1;
+    border: none;
+    outline: none;
+    background-color: #a2ccea;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+@media all and (max-width: 600px) {
+    .header + .container{
+        width: 70%;
+        margin-top: 10%;
+    }
+    .author {
+        top: 16px;
+        font-size: 16px;
+    }
+    .date {
+        top: 0px; 
+        right: 5px; 
+        font-size: 12px;
+    }
+    .header{
+        border-radius: 0%;
+    }
+    .drop-content {
+        width: 100%;
+        right: 0px;
+        border-radius: 0%;
+        text-align: center;
+    }
+    #myBtn {
+        padding: 12px;
+        font-size: 20px;
+    }
+}
+</style>
