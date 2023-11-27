@@ -1,10 +1,22 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header-compo></header-compo>
+  <footer-compo></footer-compo>
 </template>
+
+
+<script>
+import HeaderCompo from "@/components/HeaderCompo.vue"
+import FooterCompo from "@/components/FooterCompo.vue"
+
+export default{
+  name: 'App',
+  components: {
+    HeaderCompo,
+    FooterCompo
+  },
+}
+</script>
+
 
 <style>
 #app {
@@ -15,16 +27,4 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

@@ -1,6 +1,8 @@
 <template>
+  <h1> Main Page</h1>
   <div class="home">
     <get-data :posts ="posts"/>
+    <button v-on:click="resetLikes"> Reset likes</button>
   </div>
 </template>
 
@@ -10,6 +12,7 @@ import getData from "@/components/getData.vue"
 
 export default {
   name: 'HomeView',
+  props: ["posts"],
   components: {
     getData
   },
@@ -17,12 +20,11 @@ export default {
     return {
     }
   },
-  mounted() {
-        fetch('https://api.npoint.io/48609dec2ba5b143263c')
-        .then((response) => response.json())
-        .then(data => this.posts = data)
-        .catch(err => console.log(err.message))
+  methods: {
+    resetLikes :function() {
+      this.$store.dispatch("resetLikes")
     }
+  }
 };
 </script>
 
