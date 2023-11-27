@@ -1,24 +1,28 @@
 <template>
-    <body>
-    <main id = "main-content">
-    <div class="posts" v-for="post in jsonData"   :key="post.index">  
-    <a class = "pic"> 
-        <img :src= post.profilepic width="50" height="50">
-    </a>
-    <div class = "pic2"> 
-        <img :src = post.picture>
-    </div>
-    <p> {{post.text}} </p>
-    <div class = "date">{{post.date}} </div>
-    <button v-on:click="incrementCounter(post.id)" class = "like">
-        <img v-bind:src = post.likepic width="70" height="50">
-    </button>
-    <span>Clicked: {{ post.counter }}</span>
-    </div>
+  <body>
+    <main id="main-content">
+      <div class="posts" v-for="post in jsonData" :key="post.index">
+        <a class="pic">
+          <img :src="post.profilepic" width="50" height="50" />
+        </a>
+        <div class="author">{{post.author}}</div>
+        <div class="pic2">
+          <img :src="post.picture" />
+        </div>
+        <p>{{post.text}}</p>
+        <div class="date">{{post.date}}</div>
+        <div class="row">
+          <div class="col-md-12">
+            <button v-on:click="incrementCounter(post.id)" class="like">
+              <img v-bind:src="post.likepic" width="70" height="50" />
+            </button>
+            <span>Clicked: {{ post.counter }}</span>
+          </div>
+        </div>
+      </div>
     </main>
-    </body>
+  </body>
 </template>
-
 
 <script>
 export default {
@@ -39,7 +43,6 @@ export default {
     this.$store.dispatch('fetchJson');
   }
 }
-
 </script>
 
 <style scoped>
@@ -79,7 +82,7 @@ body {
 /* Child selector*/
 div > p {
     font-family: arial;
-    
+
 }
 
 /*::first-letter pseudo-element*/
@@ -94,18 +97,18 @@ div > p {
 }
 
 .date {
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-    color: black; 
-    padding: 5px; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: black;
+    padding: 5px;
     font-size: 12px;
 }
 
 .posts .pic2 img {
     width: 95%;
-    height: auto; 
-    display: block; 
+    height: auto;
+    display: block;
     margin: 0 auto;
     padding: 20px;
 }
@@ -117,15 +120,70 @@ p ~ .date {
 
 @media all and (max-width: 600px) {
     .date {
-        top: 0px; 
-        right: 5px; 
+        top: 0px;
+        right: 5px;
         font-size: 12px;
     }
-  
-
 }
 
 .like {
     text-align: left;
+}
+
+.author {
+    position: absolute;
+    top: 14px;
+    left: 75px;
+    color: black;
+    padding: 5px;
+    font-size: 18px;
+}
+button{
+    display:flex;
+    justify-content: center;
+    left: 4%;
+    bottom: 10px;
+    background:  #7cb6e0;
+    width: 10%;
+    border-radius: 10%;
+    position: relative;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+/*https://www.w3schools.com/howto/howto_css_animate_buttons.asp*/
+.like:after {
+    content: "";
+    background: #2ca1f4;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.like:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+span{
+    display:flex;
+    justify-content: center;
+    bottom: 10px;
+    left: 15%;
+    width: 15%;
+    border-radius: 10%;
+    position: absolute;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
 }
 </style>

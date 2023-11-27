@@ -1,30 +1,31 @@
 <template>
-    <h1> Sign Up</h1>
+  <h1>Sign Up</h1>
 
-<div>
-    
-    <form @submit.prevent ="validateForm">
-    <h2>Create an account</h2>
-    <label for="email">Email</label>
-    <input type="email" placeholder="Email" required v-model="email">
-    <label for="password">Password</label>
-    <input type="password" placeholder="Password" required v-model="password">
-    <div v-if="validatePassword" class="error"> {{validatePassword}}</div>
- 
-  
-  <div class="submit">
-      <button>Sign up </button>
-  </div>
-  </form>
-  
-  
+  <div>
+    <form @submit.prevent="validateForm">
+      <h2>Create an account</h2>
+      <label for="email">Email</label>
+      <input type="email" placeholder="Email" required v-model="email" />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="Password"
+        required
+        v-model="password"
+      />
+      <div v-if="validatePassword" class="error">{{validatePassword}}</div>
+
+      <div class="submit">
+        <button>Sign up</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
 
 export default {
-name: "SignUp", 
+name: "SignUp",
 
 data: function() {
     return {
@@ -44,9 +45,9 @@ data: function() {
    console.log(regex.test(this.password));
    console.log(this.password);
    this.validatePassword = regex.test(this.password)? '':
-   `The password should be of a specific length (at least 8 chars and less than 15 chars), 
-   it should start with an uppercase alphabet character, 
-   it should include the character “_”, include at least one uppercase alphabet character, 
+   `The password should be of a specific length (at least 8 chars and less than 15 chars),
+   it should start with an uppercase alphabet character,
+   it should include the character “_”, include at least one uppercase alphabet character,
    include at least two lowercase alphabet characters and include at least one numeric value`
    }
   }
@@ -57,7 +58,8 @@ data: function() {
 form {
   max-width: 420px;
   margin: 30px auto;
-  background:  rgb(167, 154, 154);
+  border: 1px solid #746161;
+  background-color: #ddd;
   text-align: left;
   padding: 40px;
   border-radius: 10px;
