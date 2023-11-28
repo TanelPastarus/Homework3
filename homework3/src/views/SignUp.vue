@@ -39,7 +39,7 @@ data: function() {
    /* Validate password */
    validateForm(){
    console.log('signup is submitted');
-   this.validatePassword = (this.password.length <8 || this.password> 15)? 'password must be between 8-15 chars':''
+   this.validatePassword = (this.password.length <8 || this.password> 15) ? 'password must be between 8-15 chars':''
    console.log(this.validatePassword);
    let regex = /^(?=.*[A-Z])(?=.*[a-z].*[a-z])(?=.*\d)(?=.*_)[A-Z][A-Za-z0-9_]{7,14}$/
    console.log(regex.test(this.password));

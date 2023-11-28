@@ -11,14 +11,10 @@
         </div>
         <p>{{post.text}}</p>
         <div class="date">{{post.date}}</div>
-        <div class="row">
-          <div class="col-md-12">
             <button v-on:click="incrementCounter(post.id)" class="like">
               <img v-bind:src="post.likepic" width="70" height="50" />
             </button>
             <span>Clicked: {{ post.counter }}</span>
-          </div>
-        </div>
       </div>
     </main>
   </body>
@@ -138,7 +134,8 @@ p ~ .date {
     padding: 5px;
     font-size: 18px;
 }
-button{
+
+button {
     display:flex;
     justify-content: center;
     left: 4%;
@@ -173,17 +170,12 @@ button{
     transition: 0s
 }
 
-span{
+span {
     display:flex;
-    justify-content: center;
     bottom: 10px;
     left: 15%;
     width: 15%;
-    border-radius: 10%;
     position: absolute;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
+    font-style: italic;
 }
 </style>
